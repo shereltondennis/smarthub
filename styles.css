@@ -1,4 +1,5 @@
 /* General Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -308,104 +309,132 @@ footer {
     .about-grid { grid-template-columns: 1fr; }
 }
 
+
+
+
 /* Contact Section Styles */
+/* Container Styles */
 .contact-section {
-    padding: 80px 10%;
-    background-color: #f4f4f4;
+  padding: 60px 20px;
+  background-color: #fdfdfd;
 }
 
-.contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 50px;
-    margin-top: 40px;
+.triple-grid-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+  gap: 30px;
 }
 
-.contact-info {
-    background: #1a2a6c;
-    color: white;
-    padding: 40px;
-    border-radius: 8px;
+.column h3 {
+  margin-bottom: 15px;
+  font-family: sans-serif;
 }
 
-.info-item {
-    margin-bottom: 25px;
+/* Styling Inputs and Textarea */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; /* Crucial for width alignment */
 }
 
-.info-item h4 {
-    color: #f1c40f;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
+textarea {
+  height: 100px;
+  resize: none;
 }
 
-.info-item a {
-    color: white;
-    text-decoration: none;
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.wa-link {
-    display: inline-block;
-    margin-top: 5px;
-    background: #25d366;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.contact-form-box {
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.input-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.contact-form-box input, 
-.contact-form-box select, 
-.contact-form-box textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-}
-
-.btn-submit {
-    background: #1a2a6c;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    transition: 0.3s;
-}
-
-.btn-submit:hover {
-    background: #f1c40f;
-    color: #1a2a6c;
-}
-
-.consent {
-    display: block;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
+.submit-btn:hover {
+  background-color: #333;
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-    }
-    .input-group {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 800px) {
+  .triple-grid-container {
+    grid-template-columns: 1fr; /* Stacks vertically on small screens */
+  }
 }
+
+
+
+
+<style>
+  .payment-section {
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
+  }
+
+  .section-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .service-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .service-card {
+    flex: 1;
+    min-width: 250px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .service-card.featured {
+    border: 2px solid #635bff;
+    position: relative;
+  }
+
+  .price {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #1a1f36;
+  }
+
+  .pay-button {
+    margin-top: auto;
+    background-color: #635bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .pay-button:hover {
+    background-color: #4b45d0;
+  }
+</style>

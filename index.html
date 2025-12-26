@@ -17,7 +17,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="btn-small">Contact Us</a></li>
+                <li><a href="#contact-us" class="btn-small">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -166,92 +166,166 @@
 </section>
 
 
-    <section id="quote" class="quote-section">
-        <div class="form-container">
-            <h2>Request a Quote</h2>
-            <form id="quoteForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                </div>
-                <select required>
-                    <option value="">Select Project Type</option>
-                    <option value="carpentry">Carpentry</option>
-                    <option value="design">Design</option>
-                    <option value="renovation">Renovation</option>
-                    <option value="roofing">Roofing</option>
-                </select>
-                <textarea placeholder="Tell us about your project..." rows="5"></textarea>
-                <label class="checkbox-label">
-                    <input type="checkbox" required> I agree to the payment and safety policies.
+   <section id="quote" class="quote-section">
+    <div class="form-container">
+        <div id="agreement-area" style="text-align: center; padding: 20px; border: 2px dashed #3498db; border-radius: 10px; margin-bottom: 20px;">
+            <h3 style="font-family: 'Oswald', sans-serif;">Client Verification</h3>
+            <p>Please review our <strong>Payment & Safety Policies</strong> to unlock the inquiry form.</p>
+            <a href="privacy-policy.pdf" target="_blank" onclick="unlockForm()" style="display: inline-block; padding: 10px 20px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 15px;">
+                📄 Open Policies (PDF)
+            </a>
+            <div id="unlock-check" style="display: none; margin-top: 10px;">
+                <label>
+                    <input type="checkbox" id="agree-checkbox" onchange="showFinalForm()"> I, Clint, agree to the terms and safety protocols.
                 </label>
-                <button type="submit" class="btn-primary">Get your free quote</button>
-            </form>
+            </div>
         </div>
-    </section>
 
-    <!--contact section-->
-
-    <section id="contact" class="contact-section">
-    <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-wrapper">
-            
-            <div class="contact-info">
-                <div class="info-item">
-                    <h4>📍 Office Address</h4>
-                    <p>Souls Clinic community, Paynesville,<br>Montserrado County, Liberia</p>
-                </div>
-                <div class="info-item">
-                    <h4>📞 Phone & WhatsApp</h4>
-                    <p><a href="tel:+231776109240">+231 77 610 9240</a></p>
-                    <p><a href="https://wa.me/231776109240" class="wa-link">Chat on WhatsApp</a></p>
-                </div>
-                <div class="info-item">
-                    <h4>📧 Email</h4>
-                    <p><a href="mailto:shereltondennis@gmail.com">shereltondennis@gmail.com</a></p>
-                </div>
-                <div class="info-item">
-                    <h4>⏰ Business Hours</h4>
-                    <p>Mon–Sat: 8:00 – 17:00</p>
-                </div>
-            </div>
-
-            <div class="contact-form-box">
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="bfaed397-ebd0-48dc-a98a-3e590da49b09">
-                    
-                    <div class="input-group">
-                        <input type="text" name="name" placeholder="Full Name" required>
-                        <input type="text" name="phone" placeholder="Phone Number" required>
-                    </div>
-                    
+        <div id="actual-form" style="display: none; opacity: 0; transition: opacity 0.5s ease;">
+            <h2 style="text-align: center;">Project Inquiry Form</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="bfaed397-ebd0-48dc-a98a-3e590da49b09">
+                
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name / Company" required>
                     <input type="email" name="email" placeholder="Email Address" required>
-                    
-                    <select name="project_type" required>
-                        <option value="" disabled selected>Select Project Type</option>
-                        <option value="Carpentry">Carpentry</option>
-                        <option value="Home Design">Home Design</option>
-                        <option value="Renovation">Renovation</option>
-                        <option value="Roofing">Roofing</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    
-                    <textarea name="message" rows="5" placeholder="How can we help you?" required></textarea>
-                    
-                    <label class="consent">
-                        <input type="checkbox" required> I agree to the privacy policy
-                    </label>
-                    
-                    <button type="submit" class="btn-submit">Send Message</button>
-                </form>
-            </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" name="phone" placeholder="Phone Number (WhatsApp preferred)" required>
+                    <input type="text" name="location" placeholder="Project Location (e.g. Paynesville)" required>
+                </div>
 
+                <select name="service" required>
+                    <option value="">Select Service Needed</option>
+                    <option value="carpentry">Professional Carpentry</option>
+                    <option value="roofing">Roofing & Waterproofing</option>
+                    <option value="renovation">Full Renovation</option>
+                    <option value="design">Interior Home Design</option>
+                </select>
+
+                <textarea name="message" placeholder="Describe your project goals and timeline..." rows="5" required></textarea>
+                
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit Inquiry to Smart Carpenters</button>
+            </form>
         </div>
     </div>
 </section>
+    <!--contact section-->
+
+   <section id="contact-us" class="contact-section">
+  <form action="https://formsubmit.co/shereltondennis@gmail.com" method="POST" class="triple-grid-container">
+    
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Message from Website!">
+
+    <div class="column col-social">
+      <h3>Connect</h3>
+      <p>Follow or DM me:</p>
+      <div class="social-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+
+    <div class="column col-inputs">
+      <h3>Details</h3>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+
+    <div class="column col-note">
+      <h3>Message</h3>
+      <textarea name="message" placeholder="Write your note here..." required></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </div>
+
+  </form>
+</section>
 <!---end of contact section--->
 
+<section class="payment-section">
+  <h2 class="section-title">Select a Service</h2>
+  
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>Basic Consultation</h3>
+      <p>30-minute discovery call</p>
+      <div class="price">$50</div>
+      <a href="YOUR_STRIPE_LINK_1" class="pay-button">Pay & Book</a>
+    </div>
+
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+    <div class="service-card featured">
+      <h3>Full Strategy</h3>
+      <p>Complete business roadmap</p>
+      <div class="price">$150</div>
+      <a href="YOUR_STRIPE_LINK_2" class="pay-button">Pay & Book</a>
+    </div>
+  </div>
+
+</section>
+<section>
     <footer>
         <div class="footer-container">
             <div class="footer-about">
@@ -276,6 +350,27 @@
             </div>
         </div>
     </footer>
+</section>
+    
+    <script>
+    // 1. Show the checkbox once the PDF is clicked
+    function unlockForm() {
+        document.getElementById('unlock-check').style.display = 'block';
+    }
 
+    // 2. Hide the agreement box and fade in the inquiry form
+    function showFinalForm() {
+        if(document.getElementById('agree-checkbox').checked) {
+            const agreementArea = document.getElementById('agreement-area');
+            const inquiryForm = document.getElementById('actual-form');
+            
+            agreementArea.style.display = 'none'; // Remove the agreement box
+            inquiryForm.style.display = 'block';  // Show the form
+            setTimeout(() => {
+                inquiryForm.style.opacity = '1';  // Smooth fade in
+            }, 10);
+        }
+    }
+</script>
 </body>
 </html>

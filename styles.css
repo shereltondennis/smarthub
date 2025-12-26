@@ -23,7 +23,7 @@ h1, h2, h3 {
 header {
     background: #b8860b;
     padding: 1rem 5%;
-    position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -437,4 +437,44 @@ textarea {
   .pay-button:hover {
     background-color: #4b45d0;
   }
-</style>
+  /* Header Mobile Fix */
+
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column; /* Stack menu items vertically */
+        width: 100%;
+        text-align: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .logo {
+        margin: 0 auto; /* Centers logo on mobile */
+    }
+}
+/* Recent Projects Mobile Fix */
+.projects-container, .project-grid {
+    display: flex;
+    flex-wrap: wrap; /* Critical for mobile stacking */
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-item {
+    flex: 1 1 calc(33.333% - 20px); /* 3 per row on desktop */
+    min-width: 250px;
+}
+
+@media (max-width: 768px) {
+    .project-item {
+        flex: 1 1 100%; /* 1 per row on mobile */
+        max-width: 100%;
+    }
+    
+    .project-item img {
+        width: 100%; /* Ensures project images don't bleed off screen */
+        height: auto;
+    }
+}

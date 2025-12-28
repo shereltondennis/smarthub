@@ -245,39 +245,53 @@ footer {
     text-decoration: none;
 }
 
-/* Mobile Responsive */
+/* Ensure the navbar stays flexible */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap; /* Allows items to wrap if screen is too narrow */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    max-width: 80%; /* Prevents logo from pushing off screen */
+}
+
+.logo-image {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+}
+
+.logo-text {
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds ... if the company name is too long */
+}
+
+/* Mobile Specific Adjustments */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 2.2rem; }
-    .form-group { flex-direction: column; gap: 0; }
+    .logo-text {
+        font-size: 0.9rem; /* Shrinks text slightly for mobile */
+    }
+
+    /* Keep nav-links hidden for now, or stack them */
+    .nav-links {
+        display: none; 
+        /* Optimization: If you want a vertical menu, change display to 'flex' 
+           and set flex-direction to 'column' */
+    }
 }
 
-/* About Section Styles */
-/* --- General Container Setup --- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- About Section Header --- */
-.about-section {
-    padding: 60px 0;
-    font-family: 'Inter', sans-serif;
-    
-}
-
-.about-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-/* --- Mission & Values Side-by-Side --- */
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 80px;
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 0.8rem;
+        white-space: normal; /* Allows name to wrap to 2 lines on tiny phones */
+    }
 }
 
 .mission-card, .values-card {

@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -28,6 +28,11 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(38, 37, 37, 0.253);
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar {
@@ -40,6 +45,7 @@ header {
     font-size: 2.5rem;
     font-weight: bold;
     color: rgb(255, 255, 255);
+    
 }
 
 .nav-links {
@@ -63,7 +69,7 @@ header {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+                url('image/hero.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,70 +253,127 @@ footer {
 }
 
 /* About Section Styles */
+/* --- General Container Setup --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- About Section Header --- */
 .about-section {
-    padding: 80px 10%;
-    background-color: #ffffff;
-    color: #333;
+    padding: 60px 0;
+    font-family: 'Inter', sans-serif;
+    
 }
 
 .about-header {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 50px;
+    margin-bottom: 50px;
 }
 
-.intro-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #555;
-}
-
+/* --- Mission & Values Side-by-Side --- */
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 .mission-card, .values-card {
-    background: #f8f9fa;
+    background: #f9f9f9;
     padding: 30px;
     border-radius: 8px;
-    border-top: 4px solid #1a2a6c;
+    border-top: 4px solid #d4af37; /* Carpentry Gold/Wood color */
 }
 
-.team-section h3 {
+/* --- Leadership Side-by-Side Setup --- */
+.section-subtitle {
     text-align: center;
-    margin-bottom: 30px;
     font-size: 2rem;
+    margin-bottom: 40px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* This creates 4 columns on desktop, and shrinks as needed */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
 }
 
+/* Individual Member Card */
 .member {
-    padding: 20px;
-    background: #1a2a6c;
-    color: white;
-    border-radius: 5px;
     text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
 }
 
+.member:hover {
+    transform: translateY(-5px);
+}
+
+/* Circular Images */
+.member-photo-wrapper {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 15px;
+    border-radius: 50%; /* Makes the photo a circle */
+    overflow: hidden;
+    border: 5px solid #eee;
+}
+
+.member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image stretching */
+}
+
+/* Name and Role Styling */
 .member h4 {
-    color: #f1c40f;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.role {
+    display: block;
+    color: #d4af37;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
     margin-bottom: 10px;
 }
+
+.member p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* 1 per row on phones */
+    }
+    
+    .member-photo-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+}
+/* About Section Styles */
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr; }
 }
-
-
-
 
 /* Contact Section Styles */
 /* Container Styles */
@@ -369,74 +432,85 @@ textarea {
   }
 }
 
+ /* service section */
+.payment-section {
+    padding: 60px 0;
+}
 
+.payment-grid {
+    display: grid;
+    /* This creates 3 equal columns side-by-side */
+    grid-template-columns: repeat(3, 2fr); 
+    gap: 25px; /* Spacing between cards */
+}
 
-
-<style>
-  .payment-section {
-    max-width: 900px;
-    margin: 40px auto;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    padding: 20px;
-  }
-
-  .section-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-  }
-
-  .service-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .service-card {
-    flex: 1;
-    min-width: 250px;
+.service-card {
     background: #fff;
-    border: 1px solid #e1e1e1;
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-  }
+    transition: transform 0.3s ease;
+}
 
-  .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
+.service-card:hover {
+    transform: translateY(-10px);
+}
 
-  .service-card.featured {
-    border: 2px solid #635bff;
-    position: relative;
-  }
+.card-img {
+    width: 100%;
+    height: 180px;
+}
 
-  .price {
-    font-size: 36px;
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps images from stretching */
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.price {
+    font-size: 1.5rem;
     font-weight: bold;
-    margin: 20px 0;
-    color: #1a1f36;
-  }
+    margin: 15px 0;
+    color: #2c3e50;
+}
 
-  .pay-button {
-    margin-top: auto;
-    background-color: #635bff;
+.pay-button {
+    display: block;
+    background: #27ae60;
     color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
+    border: 4px solid #d4af37;
+    padding: 10px;
     text-decoration: none;
-    font-weight: 600;
-    transition: background 0.2s;
-  }
+    border-radius: 5px;
+    font-weight: bold;
+}
 
-  .pay-button:hover {
-    background-color: #4b45d0;
-  }
+/* Featured Card Highlight */
+.service-card.featured {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* --- Responsive View --- */
+@media (max-width: 992px) {
+    .payment-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .payment-grid {
+        grid-template-columns: 1fr; /* 1 per row on phones */
+    }
+}
+ /* end of service section */
+
   /* Header Mobile Fix */
 
 
@@ -477,4 +551,83 @@ textarea {
         width: 100%; /* Ensures project images don't bleed off screen */
         height: auto;
     }
+}
+  /* Quick Link Button Style */
+  .quick-link-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%; /* Default to full width for mobile */
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .quick-link-item:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  .icon-pdf {
+    margin-right: 12px;
+    font-size: 1.2em;
+  }
+
+  /* Container for the Quick Links */
+  .quick-links-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .quick-link-item {
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+  }
+  .logo-container {
+  position: relative;
+}
+.logo-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  z-index: -1;
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+.gallery-img {
+  position: relative;
+  width: 25%; /* adjust as needed */
+  margin: 10px;
+}
+.gallery-img img {
+  width: 100%;
+  height: 150px; /* adjust as needed */
+  object-fit: cover;
+}
+.gallery-img span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 5px;
 }

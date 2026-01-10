@@ -20,26 +20,46 @@ h1, h2, h3 {
 }
 
 /* Navigation */
+:root {
+    --header-height: 70px;
+    --max-content-width: 1200px;
+    --container-padding: 5%;
+    --gap: 20px;
+}
+
+/* Responsive base font size */
+html {
+    font-size: clamp(14px, 1.4vw, 16px);
+} 
+
 header {
     background: #b8860b;
-    padding: 1rem 5%;
-    position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(38, 37, 37, 0.253);
-     position: fixed;
+    padding: 0 5%;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(38, 37, 37, 0.253);
 }
+
+body {
+    padding-top: var(--header-height);
+} 
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--container-padding);
+    box-sizing: border-box;
+} 
 
 .logo {
     font-size: 2.5rem;
@@ -50,24 +70,68 @@ header {
 
 .nav-links {
     list-style: none;
-    display: flex;
+    display: flex; /* inline on larger screens */
     gap: 20px;
+    align-items: center;
 }
+
+/* Close button hidden on desktop (shown in mobile overlay) */
+.nav-close-wrapper {
+    display: none;
+}  
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #000;
     font-weight: 600;
     transition: 0.3s;
-}
+} 
 
 .nav-links a:hover {
-    color: #b8860b;
+    color: #333;
+}  
+
+.nav-links a:hover {
+    color: #333;
+} 
+
+/* The hamburger toggle is hidden on wider screens and shown at small breakpoints */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
 }
+
+.nav-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    margin: 4px 0;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+} 
+
+.nav-toggle.active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.active .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.active .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } 
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    margin: 4px 0;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* Active state animates into an X */
+.nav-toggle.active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.active .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.active .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }  
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: calc(100vh - var(--header-height));
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('image/hero.jpg') no-repeat center center/cover;
     display: flex;
@@ -76,24 +140,32 @@ header {
     text-align: center;
     color: white;
     padding: 0 20px;
-}
+} 
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
     margin-bottom: 1rem;
-    margin-top: 3rem;
-    
+    margin-top: 1rem;
+    line-height: 1.05;
 }
+
+/* Hero content wrapper to constrain width */
+.hero-content {
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.hero p {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    margin-bottom: 2rem;
+    max-width: 600px;
+} 
 
 .highlight {
     color: #f1c40f;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-}
+/* hero paragraph sizing handled above with responsive clamp */
 
 /* Buttons */
 .btn-primary {
@@ -117,19 +189,51 @@ header {
     border-radius: 4px;
 }
 
+.btn-small {
+    padding: 8px 14px;
+    background: #fff;
+    color: #1a2a6c;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* Make the Contact link in the header match other nav links */
+.navbar .nav-links .btn-small {
+    padding: 0; /* remove button padding to line up with links */
+    background: transparent; /* match nav background */
+    color: inherit; /* inherit nav link color */
+    border-radius: 0;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline; /* same flow as other links */
+}
+
+.navbar .nav-links .btn-small:hover {
+    color: #e53935; /* red */
+    background: transparent;
+}
+
+
 /* Highlights Bar */
 .highlights {
     background: #1a2a6c;
     color: white;
-    padding: 40px 5%;
+    padding: 40px var(--container-padding);
 }
 
 .container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
-}
+    gap: var(--gap);
+    box-sizing: border-box;
+} 
 
 .highlight-item {
     text-align: center;
@@ -157,12 +261,12 @@ header {
 
 .service-card {
     background: white;
-    padding: 40px;
+    padding: clamp(20px, 2.5vw, 40px);
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
     transition: transform 0.3s;
-}
+} 
 
 .service-card:hover {
     transform: translateY(-10px);
@@ -173,29 +277,65 @@ header {
     margin-bottom: 20px;
 }
 
-/* Gallery */
+/* Gallery — responsive grid-like layout */
 .gallery-strip {
     display: flex;
-    height: 300px;
-    gap: 5px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
 }
 
 .gallery-img {
-    flex: 1;
+    flex: 1 1 30%;
+    min-width: 200px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
     background: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    transition: flex 0.5s;
+    position: relative;
     cursor: pointer;
 }
 
-.gallery-img:hover {
-    flex: 3;
-    background: #444;
+.gallery-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
+
+.gallery-img span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 6px 8px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .gallery-img { flex: 1 1 100%; }
+    .gallery-img img { height: 150px; }
+}
+
+@media (min-width: 1400px) {
+    .gallery-img img { height: 260px; }
+} 
+
+@media (max-width: 600px) {
+    .gallery-strip {
+        flex-direction: column;
+        height: auto;
+    }
+    .gallery-img {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .gallery-img img {
+        height: auto;
+        max-height: 250px;
+    }
+} 
 
 /* Quote Form */
 .quote-section {
@@ -249,18 +389,66 @@ footer {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+
+    /* Hide the inline nav on small screens; the toggle will open the overlay menu */
+    .nav-links {
+        display: none; /* hidden until opened */
+        flex-direction: column;
+        gap: 10px;
+        background: #b8860b;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        padding: 10px var(--container-padding);
+        max-height: 70vh;
+        overflow: auto;
+        transition: max-height 0.35s ease, transform 0.35s ease;
+        z-index: 1100;
+    }
+
+    .nav-links.open {
+        display: flex;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    body.nav-open::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 1050;
+    }
+
+    .nav-close-wrapper { display: flex; justify-content: flex-end; }
+    .nav-close {
+        background: transparent;
+        border: none;
+        color: #000;
+        font-size: 1.3rem;
+        padding: 6px 8px;
+        cursor: pointer;
+    }
+
+    .nav-close:focus,
+    .nav-toggle:focus {
+        outline: 3px solid #f1c40f;
+        outline-offset: 2px;
+    }
+
+    .nav-links a {
+        padding: 8px 4px;
+        color: #fff;
+    }
+
     .hero h1 { font-size: 2.2rem; }
     .form-group { flex-direction: column; gap: 0; }
-}
+    .hero { min-height: calc(100vh - var(--header-height)); padding-top: 20px; }
+} 
 
 /* About Section Styles */
-/* --- General Container Setup --- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+/* container already defined above (max-width and padding handled) */
 
 /* --- About Section Header --- */
 .about-section {
@@ -370,6 +558,12 @@ footer {
         height: 150px;
     }
 }
+
+/* Reduce header size on the smallest phones */
+@media (max-width: 420px) {
+    :root { --header-height: 60px; }
+    .hero h1 { font-size: 1.6rem; }
+} 
 /* About Section Styles */
 
 /* Responsive adjustment */
@@ -599,54 +793,35 @@ textarea {
     }
   }
   .logo-container {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .logo-image {
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 50px;
   height: 50px;
-  z-index: -1;
+  object-fit: cover;
+  border-radius: 6px;
 }
 .logo-text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin-left: 60px;
-}
-
-.gallery-img {
-  position: relative;
-  width: 25%; /* adjust as needed */
-  margin: 10px;
-}
-.gallery-img img {
-  width: 100%;
-  height: 150px; /* adjust as needed */
-  object-fit: cover;
-}
-.gallery-img span {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.5);
+  margin: 0;
   color: #fff;
-  padding: 5px;
-}
+} 
+
+/* gallery styles consolidated above */
 
 
 
 
-/* Container padding for mobile */
+/* Small vertical padding for container (base layout set above) */
 .container {
-    width: 90%;
-    margin: 0 auto;
     padding: 20px 0;
-}
+} 
 
-/* Make Nav stack or scroll on small screens */
+/* Make Nav stack or scroll if needed (display controlled by the toggle) */
 .nav-links {
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
@@ -655,9 +830,15 @@ textarea {
 /* Core Responsive Grids */
 .services-grid, .team-grid, .payment-grid {
     display: grid;
-    /* This creates 1 column on mobile, and 3 columns on desktop */
+    /* This creates 1 column on mobile, and flexible columns on larger screens */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+}
+
+@media (min-width: 1600px) {
+    .container, .services-grid, .team-grid { max-width: 1400px; }
 }
 
 /* Ensure images don't overflow */

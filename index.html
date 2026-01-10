@@ -10,12 +10,18 @@
 <body>
 
     <header>
-        <nav class="navbar">
+        <nav class="navbar" role="navigation">
             <div class="logo-container">
                 <img src="image/logo11.jpeg" alt="Logo" class="logo-image">
                 <span class="logo-text">Smart Construction Hub</span>
             </div>
-            <ul class="nav-links">
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation" aria-hidden="true">
+                <li class="nav-close-wrapper"><button class="nav-close" aria-label="Close menu">✖</button></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -23,7 +29,7 @@
                 <li><a href="#contact-us" class="btn-small">Contact Us</a></li>
             </ul>
         </nav>
-    </header>
+    </header> 
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -393,6 +399,95 @@
             }, 10);
         }
     }
-</script>
+
+    // Mobile nav: toggle, Esc-to-close, outside-click, and focus management
+    (function(){
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('primary-navigation');
+        const navClose = document.querySelector('.nav-close');
+        let prevActiveElement = null;
+
+        if (!navToggle || !navLinks) return;
+
+        function openMenu() {
+            prevActiveElement = document.activeElement;
+            navLinks.classList.add('open');
+            navLinks.setAttribute('aria-hidden', 'false');
+            navToggle.setAttribute('aria-expanded', 'true');
+            navToggle.classList.add('active');
+            document.body.classList.add('nav-open');
+            document.body.style.overflow = 'hidden'; // prevent background scroll on mobile
+
+            const firstFocusable = navLinks.querySelector('a, button');
+            if (firstFocusable) firstFocusable.focus();
+
+            document.addEventListener('keydown', handleKeydown);
+            document.addEventListener('click', outsideClick);
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('open');
+            navLinks.setAttribute('aria-hidden', 'true');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.classList.remove('active');
+            document.body.classList.remove('nav-open');
+            document.body.style.overflow = '';
+
+            if (prevActiveElement) prevActiveElement.focus();
+
+            document.removeEventListener('keydown', handleKeydown);
+            document.removeEventListener('click', outsideClick);
+        }
+
+        function toggleMenu() {
+            if (navLinks.classList.contains('open')) closeMenu();
+            else openMenu();
+        }
+
+        function handleKeydown(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+                return;
+            }
+
+            if (e.key === 'Tab') {
+                // Basic focus trap inside menu
+                const focusable = Array.from(navLinks.querySelectorAll('a, button'));
+                if (focusable.length === 0) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        }
+
+        function outsideClick(e) {
+            // Click outside the nav-links and nav-toggle closes menu
+            if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                closeMenu();
+            }
+        }
+
+        /* resize handling removed — hamburger will be primary on all sizes */
+
+        navToggle.addEventListener('click', function(e){
+            e.stopPropagation();
+            toggleMenu();
+        });
+        navClose && navClose.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
+
+        // Close menu when a navigation link is clicked
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', function(){ closeMenu(); });
+        });
+
+    })();
+</script> 
 </body>
 </html>

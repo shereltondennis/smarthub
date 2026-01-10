@@ -412,8 +412,14 @@ footer {
         display: flex;
         box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
+    html, body {
+  width: 100%;
+  overflow-x: hidden; /* stops left-right scrolling */
+}
 
     body.nav-open::before {
+        width: 100%;
+        overflow-x: hidden;
         content: '';
         position: fixed;
         inset: 0;
@@ -851,8 +857,4 @@ img {
 @media (max-width: 600px) {
     h1 { font-size: 1.8rem; }
     .hero-btns { display: flex; flex-direction: column; gap: 10px; }
-}
-html, body {
-  width: 100%;
-  overflow-x: hidden; /* stops left-right scrolling */
 }

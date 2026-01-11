@@ -117,12 +117,7 @@ body {
 .nav-toggle.active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .nav-toggle.active .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.active .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); } 
-    width: 24px;
-    height: 2px;
-    background: #fff;
-    margin: 4px 0;
-    transition: transform 0.25s ease, opacity 0.2s ease;
-}
+
 
 /* Active state animates into an X */
 .nav-toggle.active .bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -405,7 +400,7 @@ footer {
         max-height: 70vh;
         overflow: auto;
         transition: max-height 0.35s ease, transform 0.35s ease;
-        z-index: 1100;
+        z-index: 9999;
     }
 
     .nav-links.open {

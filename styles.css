@@ -33,7 +33,7 @@ html {
 } 
 
 header {
-    background: #b8860b;
+    background: #fab403d7;
     padding: 0 5%;
     min-height: var(--header-height);
     display: flex;
@@ -42,7 +42,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999;
     box-shadow: 0 2px 10px rgba(38, 37, 37, 0.253);
 }
 
@@ -64,7 +64,7 @@ body {
 .logo {
     font-size: 2.5rem;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: rgb(12, 1, 1);
     
 }
 
@@ -82,17 +82,17 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #000;
+    color: #100101;
     font-weight: 600;
     transition: 0.3s;
 } 
 
 .nav-links a:hover {
-    color: #333;
+    color: #fcfafa;
 }  
 
 .nav-links a:hover {
-    color: #333;
+    color: #f0ebeb;
 } 
 
 /* The hamburger toggle is hidden on wider screens and shown at small breakpoints */
@@ -100,7 +100,7 @@ body {
     display: none;
     background: transparent;
     border: none;
-    color: #fff;
+    color: #0d0101;
     cursor: pointer;
     padding: 10px;
 }
@@ -206,7 +206,7 @@ body {
 }
 
 .navbar .nav-links .btn-small:hover {
-    color: #e53935; /* red */
+    color: #f8f4f4; /* red */
     background: transparent;
 }
 
@@ -361,7 +361,7 @@ input, select, textarea {
 
 /* Footer */
 footer {
-    background: #111;
+    background: #070000;
     color: #ccc;
     padding: 60px 5% 20px;
 }
@@ -455,6 +455,9 @@ footer {
 .about-section {
     padding: 60px 0;
     font-family: 'Inter', sans-serif;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
     
 }
 
@@ -475,7 +478,7 @@ footer {
     background: #f9f9f9;
     padding: 30px;
     border-radius: 8px;
-    border-top: 4px solid #d4af37; /* Carpentry Gold/Wood color */
+    border-top: 4px solid #100c01; /* Carpentry Gold/Wood color */
 }
 
 /* --- Leadership Side-by-Side Setup --- */
@@ -509,9 +512,9 @@ footer {
     width: 180px;
     height: 180px;
     margin: 0 auto 15px;
-    border-radius: 50%; /* Makes the photo a circle */
+    border-radius: 5%; /* Makes the photo a circle */
     overflow: hidden;
-    border: 5px solid #eee;
+    border: 5px solid #f3d007;
 }
 
 .member-photo {
@@ -802,18 +805,108 @@ textarea {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 50px;
 }
 .logo-text {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
-  color: #fff;
+  color: #050101;
 } 
 
 /* gallery styles consolidated above */
 
+/* Container for the grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
 
+/* The flip card container */
+.flip-card {
+    background-color: transparent;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* FRONT SIDE: Slideshow Animation */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: slideAnimation 12s infinite; /* Change 12s to adjust speed */
+}
+
+/* Stagger the start time of each image */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+
+@keyframes slideAnimation {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    33% { opacity: 1; }
+    43% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* BACK SIDE styling */
+.flip-card-back {
+    background-color: #3498db;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.card-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    z-index: 10;
+}
 
 
 /* Small vertical padding for container (base layout set above) */

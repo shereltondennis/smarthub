@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Portland Cement",
+    "category": "Foundation",
+    "price": 10.50,
+    "unit": "50kg Bag",
+    "image": "https://via.placeholder.com/150",
+    "specs": "Grade 42.5N"
+  },
+  {
+    "id": 2,
+    "name": "TMT Steel Rebar (12mm)",
+    "category": "Structure",
+    "price": 45.00,
+    "unit": "6m Bundle",
+    "image": "https://via.placeholder.com/150",
+    "specs": "High Tensile"
+  },
+  {
+    "id": 3,
+    "name": "River Sand",
+    "category": "Bulk Materials",
+    "price": 35.00,
+    "unit": "Ton",
+    "image": "https://via.placeholder.com/150",
+    "specs": "Washed & Screened"
+  }
+]

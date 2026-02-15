@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Construction Hub | Store</title>
+    <link rel="stylesheet" href="stylesheet/styles.css">
+    <link rel="stylesheet" href="stylesheet/stylesproduct.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar" role="navigation">
+            <div class="logo-container">
+                <img src="images/logo11.jpeg" alt="Logo" class="logo-image">
+                <span class="logo-text">Smart Construction Hub</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation" aria-hidden="true">
+                <li class="nav-close-wrapper"><button class="nav-close" aria-label="Close menu">&times;</button></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="serviceagreement.pdf" target="_blank" class="serviceagreement-btn">Service Agreement Sheet</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact-us" class="btn-small">Contact Us</a></li>
+                <li><a href="product.html">Visit our materials store</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="store-hero">
+        <h1>Materials Store</h1>
+        <p>Search, select, and order the building materials you need for every stage of construction.</p>
+    </section>
+
+    <section class="store-controls">
+        <div class="control-card">
+            <h2>Find Materials</h2>
+            <div class="controls-grid">
+                <input type="search" id="material-search" placeholder="Search by name, category, or specs">
+                <select id="category-select">
+                    <option value="all">All Categories</option>
+                    <option value="Foundation">Foundation</option>
+                    <option value="Structure">Structure</option>
+                    <option value="Roofing">Roofing</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Finishing">Finishing</option>
+                    <option value="Doors & Windows">Doors & Windows</option>
+                    <option value="Paint & Chemicals">Paint & Chemicals</option>
+                    <option value="Safety & Tools">Safety & Tools</option>
+                </select>
+                <button id="clear-filters" type="button">Clear</button>
+            </div>
+            <p id="results-count">Showing all materials.</p>
+        </div>
+
+        <div class="control-card">
+            <h2>Quick Select Item</h2>
+            <div class="quick-order-grid">
+                <select id="item-select"></select>
+                <input id="item-qty" type="number" min="1" value="1" aria-label="Quantity">
+                <button id="quick-add-btn" type="button">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="catalog">
+        <section class="category-section" data-category="Foundation">
+            <h3>Foundation Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Foundation" data-name="Premium Portland Cement" data-price="12.50" data-weight="50" data-specs="Grade 42.5N 50kg bag">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Cement" alt="Premium Portland Cement">
+                    <h4>Premium Portland Cement</h4>
+                    <p class="specs">Grade 42.5N | 50kg Bag</p>
+                    <div class="price-row"><span class="price">$12.50</span><span class="unit">/bag</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Foundation" data-name="River Sand Fine" data-price="35.00" data-weight="1000" data-specs="Washed cubic yard">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=River+Sand" alt="River Sand Fine">
+                    <h4>River Sand (Fine)</h4>
+                    <p class="specs">Washed | Cubic Yard</p>
+                    <div class="price-row"><span class="price">$35.00</span><span class="unit">/yard</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Structure">
+            <h3>Structure Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Structure" data-name="TMT Steel Rebar 12mm" data-price="45.00" data-weight="120" data-specs="High tensile 12m length bundle">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Rebar" alt="TMT Steel Rebar 12mm">
+                    <h4>TMT Steel Rebar (12mm)</h4>
+                    <p class="specs">High Tensile | 12m Bundle</p>
+                    <div class="price-row"><span class="price">$45.00</span><span class="unit">/bundle</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Structure" data-name="Concrete Blocks 6 inch" data-price="1.90" data-weight="18" data-specs="Load bearing concrete block">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Concrete+Blocks" alt="Concrete Blocks 6 inch">
+                    <h4>Concrete Blocks (6 inch)</h4>
+                    <p class="specs">Load Bearing | Standard Size</p>
+                    <div class="price-row"><span class="price">$1.90</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Roofing">
+            <h3>Roofing Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Roofing" data-name="Aluzinc Roofing Sheet" data-price="28.00" data-weight="8" data-specs="0.45mm anti rust sheet">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Roofing+Sheet" alt="Aluzinc Roofing Sheet">
+                    <h4>Aluzinc Roofing Sheet</h4>
+                    <p class="specs">0.45mm | Anti-Rust Coated</p>
+                    <div class="price-row"><span class="price">$28.00</span><span class="unit">/sheet</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Roofing" data-name="Roofing Nails Box" data-price="9.50" data-weight="5" data-specs="Galvanized roofing nails box">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Roofing+Nails" alt="Roofing Nails Box">
+                    <h4>Roofing Nails</h4>
+                    <p class="specs">Galvanized | Box Pack</p>
+                    <div class="price-row"><span class="price">$9.50</span><span class="unit">/box</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Plumbing">
+            <h3>Plumbing Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Plumbing" data-name="PVC Pipe 2 inch" data-price="14.25" data-weight="7" data-specs="Pressure rated PVC pipe">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=PVC+Pipe" alt="PVC Pipe 2 inch">
+                    <h4>PVC Pipe (2 inch)</h4>
+                    <p class="specs">Pressure Rated | 6m Length</p>
+                    <div class="price-row"><span class="price">$14.25</span><span class="unit">/piece</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Plumbing" data-name="Bathroom Mixer Tap" data-price="38.00" data-weight="2" data-specs="Chrome finish mixer tap">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Mixer+Tap" alt="Bathroom Mixer Tap">
+                    <h4>Bathroom Mixer Tap</h4>
+                    <p class="specs">Chrome Finish | Hot & Cold</p>
+                    <div class="price-row"><span class="price">$38.00</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Electrical">
+            <h3>Electrical Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Electrical" data-name="Copper Cable 2.5mm" data-price="1.20" data-weight="1" data-specs="Pure copper electrical cable meter">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Copper+Cable" alt="Copper Cable 2.5mm">
+                    <h4>Copper Cable (2.5mm)</h4>
+                    <p class="specs">Pure Copper | Per Meter</p>
+                    <div class="price-row"><span class="price">$1.20</span><span class="unit">/meter</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Electrical" data-name="Circuit Breaker 40A" data-price="17.90" data-weight="1" data-specs="Single phase breaker 40A">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Circuit+Breaker" alt="Circuit Breaker 40A">
+                    <h4>Circuit Breaker (40A)</h4>
+                    <p class="specs">Single Phase | Safety Rated</p>
+                    <div class="price-row"><span class="price">$17.90</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Finishing">
+            <h3>Finishing Materials</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Finishing" data-name="Ceramic Floor Tile 60x60" data-price="24.00" data-weight="30" data-specs="Polished tile box 1.44sqm">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Floor+Tiles" alt="Ceramic Floor Tile 60x60">
+                    <h4>Ceramic Floor Tile (60x60)</h4>
+                    <p class="specs">Polished | Box 1.44sqm</p>
+                    <div class="price-row"><span class="price">$24.00</span><span class="unit">/box</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Finishing" data-name="Gypsum Ceiling Board" data-price="11.50" data-weight="12" data-specs="Moisture resistant gypsum board">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Gypsum+Board" alt="Gypsum Ceiling Board">
+                    <h4>Gypsum Ceiling Board</h4>
+                    <p class="specs">Moisture Resistant | 12mm</p>
+                    <div class="price-row"><span class="price">$11.50</span><span class="unit">/sheet</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Doors & Windows">
+            <h3>Doors & Windows</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Doors & Windows" data-name="Steel Security Door" data-price="220.00" data-weight="65" data-specs="Heavy duty security door set">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Security+Door" alt="Steel Security Door">
+                    <h4>Steel Security Door</h4>
+                    <p class="specs">Heavy Duty | Complete Set</p>
+                    <div class="price-row"><span class="price">$220.00</span><span class="unit">/set</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Doors & Windows" data-name="Sliding Window Aluminum" data-price="145.00" data-weight="38" data-specs="Powder coated sliding window">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Sliding+Window" alt="Sliding Window Aluminum">
+                    <h4>Sliding Window (Aluminum)</h4>
+                    <p class="specs">Powder Coated | 1.2m x 1.2m</p>
+                    <div class="price-row"><span class="price">$145.00</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Paint & Chemicals">
+            <h3>Paint & Chemicals</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Paint & Chemicals" data-name="Interior Emulsion Paint 20L" data-price="78.00" data-weight="22" data-specs="Washable interior paint bucket">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Emulsion+Paint" alt="Interior Emulsion Paint 20L">
+                    <h4>Interior Emulsion Paint (20L)</h4>
+                    <p class="specs">Washable | Low Odor Finish</p>
+                    <div class="price-row"><span class="price">$78.00</span><span class="unit">/bucket</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Paint & Chemicals" data-name="Tile Adhesive 20kg" data-price="9.80" data-weight="20" data-specs="High bond tile adhesive bag">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Tile+Adhesive" alt="Tile Adhesive 20kg">
+                    <h4>Tile Adhesive (20kg)</h4>
+                    <p class="specs">High Bond | Interior/Exterior</p>
+                    <div class="price-row"><span class="price">$9.80</span><span class="unit">/bag</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category="Safety & Tools">
+            <h3>Safety & Tools</h3>
+            <div class="products-grid">
+                <article class="product-card" data-category="Safety & Tools" data-name="Safety Helmet" data-price="6.40" data-weight="1" data-specs="Impact resistant site helmet">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Safety+Helmet" alt="Safety Helmet">
+                    <h4>Safety Helmet</h4>
+                    <p class="specs">Impact Resistant | Adjustable</p>
+                    <div class="price-row"><span class="price">$6.40</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+                <article class="product-card" data-category="Safety & Tools" data-name="Angle Grinder 4 inch" data-price="59.00" data-weight="3" data-specs="Heavy duty angle grinder tool">
+                    <div class="badge">In Stock</div>
+                    <img src="https://via.placeholder.com/400x240?text=Angle+Grinder" alt="Angle Grinder 4 inch">
+                    <h4>Angle Grinder (4 inch)</h4>
+                    <p class="specs">Heavy Duty | 850W</p>
+                    <div class="price-row"><span class="price">$59.00</span><span class="unit">/unit</span></div>
+                    <button class="add-btn" type="button">Add to Order</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <section class="cart-summary">
+        <h2>Order Summary</h2>
+        <p><strong>Items in Cart:</strong> <span id="cart-count">0</span></p>
+        <ul id="selected-items"></ul>
+        <div class="totals-grid">
+            <p><strong>Total Weight:</strong> <span id="total-weight">0</span> kg</p>
+            <p><strong>Delivery Vehicle:</strong> <span id="vehicle-type">None</span></p>
+            <p><strong>Shipping Fee:</strong> $<span id="shipping-fee">0.00</span></p>
+            <p><strong>Grand Total:</strong> $<span id="grand-total">0.00</span></p>
+        </div>
+        <button class="checkout-btn" type="button">Proceed to Checkout</button>
+    </section>
+
+    <section class="tracking-section">
+        <h2>Track Your Materials</h2>
+        <div class="search-box">
+            <input type="text" id="order-id-input" placeholder="Enter Order ID (e.g., SCH-101)">
+            <button type="button" onclick="trackOrder()">Track Delivery</button>
+        </div>
+
+        <div id="tracking-display" class="tracking-card" style="display:none;">
+            <div class="order-info">
+                <h4 id="display-order-id">Order #---</h4>
+                <p id="display-item">Material: ---</p>
+            </div>
+            <div class="status-stepper">
+                <div class="step" id="step-1"><span>1</span><p>Processing</p></div>
+                <div class="step" id="step-2"><span>2</span><p>Loading</p></div>
+                <div class="step" id="step-3"><span>3</span><p>In Transit</p></div>
+                <div class="step" id="step-4"><span>4</span><p>Delivered</p></div>
+            </div>
+            <p id="delivery-eta">ETA: Calculating...</p>
+        </div>
+    </section>
+
+    <section>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>Smart Construction Hub</h3>
+                    <p>Building with integrity.</p>
+                    <p>(c) 2025 Smart Construction Hub. All rights reserved.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="serviceagreement.pdf" target="_blank">Service Agreement</a></li>
+                        <li><a href="privancy-policies1.pdf">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p>Barnard-Farm community, Paynesville City, Monrovia Liberia</p>
+                    <a href="info.smartconstructionhub@gmail.com">Email Us</a>
+                    <a href="https://wa.me/231888827060">WhatsApp Us</a>
+                    <p>Tele: +231 888827 060</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <script>
+        // Mobile nav: toggle, Esc-to-close, outside-click, and focus management
+        (function(){
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('primary-navigation');
+            const navClose = document.querySelector('.nav-close');
+            let prevActiveElement = null;
+
+            if (!navToggle || !navLinks) return;
+
+            function openMenu() {
+                prevActiveElement = document.activeElement;
+                navLinks.classList.add('open');
+                navLinks.setAttribute('aria-hidden', 'false');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.classList.add('active');
+                document.body.classList.add('nav-open');
+                document.body.style.overflow = 'hidden';
+
+                const firstFocusable = navLinks.querySelector('a, button');
+                if (firstFocusable) firstFocusable.focus();
+
+                document.addEventListener('keydown', handleKeydown);
+                document.addEventListener('click', outsideClick);
+            }
+
+            function closeMenu() {
+                navLinks.classList.remove('open');
+                navLinks.setAttribute('aria-hidden', 'true');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('active');
+                document.body.classList.remove('nav-open');
+                document.body.style.overflow = '';
+
+                if (prevActiveElement) prevActiveElement.focus();
+
+                document.removeEventListener('keydown', handleKeydown);
+                document.removeEventListener('click', outsideClick);
+            }
+
+            function toggleMenu() {
+                if (navLinks.classList.contains('open')) closeMenu();
+                else openMenu();
+            }
+
+            function handleKeydown(e) {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                    return;
+                }
+
+                if (e.key === 'Tab') {
+                    const focusable = Array.from(navLinks.querySelectorAll('a, button'));
+                    if (focusable.length === 0) return;
+                    const first = focusable[0];
+                    const last = focusable[focusable.length - 1];
+
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+
+            function outsideClick(e) {
+                if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+
+            navToggle.addEventListener('click', function(e){
+                e.stopPropagation();
+                toggleMenu();
+            });
+            navClose && navClose.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
+
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', function(){ closeMenu(); });
+            });
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

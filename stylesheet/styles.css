@@ -132,7 +132,7 @@ body {
 .hero {
     min-height: calc(100vh - var(--header-height));
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('../images/hero.jpg') no-repeat center center/cover;
+                url('../images/house.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -945,6 +945,8 @@ textarea {
 }
 
 .jobs-flip-frame {
+    --slide-count: 1;
+    --slide-seconds: 5s;
     position: relative;
     width: 100%;
     height: min(72vw, 560px);
@@ -963,7 +965,8 @@ textarea {
     opacity: 0;
     transform: rotateY(90deg) scale(0.98);
     transform-origin: center;
-    animation: jobFlip 100s infinite;
+    animation: jobFlip calc(var(--slide-count) * var(--slide-seconds)) infinite;
+    animation-delay: calc((var(--slide-index, 1) - 1) * var(--slide-seconds));
 }
 
 @keyframes jobFlip {
@@ -973,28 +976,6 @@ textarea {
     5% { opacity: 0; transform: rotateY(-90deg) scale(0.98); }
     100% { opacity: 0; transform: rotateY(-90deg) scale(0.98); }
 }
-
-.job-slide:nth-child(1) { animation-delay: 0s; }
-.job-slide:nth-child(2) { animation-delay: 5s; }
-.job-slide:nth-child(3) { animation-delay: 10s; }
-.job-slide:nth-child(4) { animation-delay: 15s; }
-.job-slide:nth-child(5) { animation-delay: 20s; }
-.job-slide:nth-child(6) { animation-delay: 25s; }
-.job-slide:nth-child(7) { animation-delay: 30s; }
-.job-slide:nth-child(8) { animation-delay: 35s; }
-.job-slide:nth-child(9) { animation-delay: 40s; }
-.job-slide:nth-child(10) { animation-delay: 45s; }
-.job-slide:nth-child(11) { animation-delay: 50s; }
-.job-slide:nth-child(12) { animation-delay: 55s; }
-.job-slide:nth-child(13) { animation-delay: 60s; }
-.job-slide:nth-child(14) { animation-delay: 65s; }
-.job-slide:nth-child(15) { animation-delay: 70s; }
-.job-slide:nth-child(16) { animation-delay: 75s; }
-.job-slide:nth-child(17) { animation-delay: 80s; }
-.job-slide:nth-child(18) { animation-delay: 85s; }
-.job-slide:nth-child(19) { animation-delay: 90s; }
-.job-slide:nth-child(20) { animation-delay: 95s; }
-
 
 /* Small vertical padding for container (base layout set above) */
 .container {

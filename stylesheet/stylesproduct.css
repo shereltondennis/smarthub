@@ -228,6 +228,34 @@ select {
     background: #1a874b;
 }
 
+.checkout-panel {
+    margin: 0 5% 24px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-panel h2 {
+    margin-top: 0;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.checkout-panel textarea {
+    width: 100%;
+    border: 1px solid #d8dde2;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 0.96rem;
+}
+
 .tracking-section {
     margin: 0 5% 30px;
     padding: 20px;
@@ -315,6 +343,10 @@ select {
 
 @media (max-width: 640px) {
     .totals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-grid {
         grid-template-columns: 1fr;
     }
 

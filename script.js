@@ -14,6 +14,7 @@ let currentCartTotal = 0;
 let currentWeightTotal = 0;
 let cartItemCount = 0;
 let productMap = new Map();
+let cartItems = [];
 
 function normalizeText(value) {
     return (value || "").trim().toLowerCase();
@@ -66,6 +67,13 @@ function addToOrder(item, quantity = 1) {
     currentCartTotal += item.price * quantity;
     currentWeightTotal += item.weight * quantity;
     cartItemCount += quantity;
+    cartItems.push({
+        name: item.name,
+        category: item.category,
+        quantity: quantity,
+        unitPrice: item.price,
+        totalPrice: item.price * quantity
+    });
 
     addLineItem(item.name, item.category, quantity, item.price, item.weight);
     renderCartTotals();
@@ -183,6 +191,58 @@ function setupCatalogControls() {
     });
 }
 
+function getOrderItemsSummary() {
+    if (cartItems.length === 0) return "";
+    return cartItems
+        .map((entry, idx) => `${idx + 1}. ${entry.name} (${entry.category}) x${entry.quantity} - $${entry.totalPrice.toFixed(2)}`)
+        .join("\n");
+}
+
+function setupCheckout() {
+    const checkoutButton = document.querySelector(".checkout-btn");
+    const checkoutPanel = document.getElementById("checkout-panel");
+    const checkoutForm = document.getElementById("checkout-form");
+    const checkoutNextInput = document.getElementById("checkout-next");
+    const orderItemsInput = document.getElementById("order-items-input");
+    const orderWeightInput = document.getElementById("order-weight-input");
+    const orderVehicleInput = document.getElementById("order-vehicle-input");
+    const orderShippingInput = document.getElementById("order-shipping-input");
+    const orderGrandTotalInput = document.getElementById("order-grand-total-input");
+
+    if (!checkoutButton || !checkoutPanel || !checkoutForm) return;
+
+    if (checkoutNextInput) {
+        checkoutNextInput.value = new URL("thank-you.html", window.location.href).toString();
+    }
+
+    checkoutButton.addEventListener("click", () => {
+        if (cartItemCount === 0) {
+            alert("Your cart is empty. Please add materials before checkout.");
+            return;
+        }
+
+        const shippingPlan = getShippingPlan(currentWeightTotal);
+        const shippingFee = shippingPlan.fee;
+        const grandTotal = currentCartTotal + shippingFee;
+
+        if (orderItemsInput) orderItemsInput.value = getOrderItemsSummary();
+        if (orderWeightInput) orderWeightInput.value = currentWeightTotal.toFixed(0);
+        if (orderVehicleInput) orderVehicleInput.value = shippingPlan.vehicle;
+        if (orderShippingInput) orderShippingInput.value = shippingFee.toFixed(2);
+        if (orderGrandTotalInput) orderGrandTotalInput.value = grandTotal.toFixed(2);
+
+        checkoutPanel.hidden = false;
+        checkoutPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    checkoutForm.addEventListener("submit", (event) => {
+        if (cartItemCount === 0) {
+            event.preventDefault();
+            alert("Your cart is empty. Please add materials before checkout.");
+        }
+    });
+}
+
 function trackOrder() {
     const input = document.getElementById("order-id-input");
     const display = document.getElementById("tracking-display");
@@ -213,6 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCatalogControls();
     setupQuickSelect();
     setupCardActions();
+    setupCheckout();
     applyCatalogFilter();
     renderCartTotals();
 });
